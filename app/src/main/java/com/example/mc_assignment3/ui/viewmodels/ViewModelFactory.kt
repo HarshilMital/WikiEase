@@ -6,19 +6,35 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.mc_assignment3.data.local.WikipediaDatabase
 import com.example.mc_assignment3.data.remote.OpenAIClient
 import com.example.mc_assignment3.data.repository.WikipediaRepository
+import com.example.mc_assignment3.util.ApiKeyManager
 import com.example.mc_assignment3.util.LocationService
 import com.example.mc_assignment3.util.ThemeManager
 
 /**
  * Factory class for creating ViewModels with dependencies.
  */
-class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory {
-
-    // Create OpenAI Client with your API key
+class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory {    // Create OpenAI Client with API key from environment variable or properties
     private val openAIClient by lazy {
-        // You should store the API key securely, this is just for demonstration
-        // In a real app, use BuildConfig or a secure storage solution
-        OpenAIClient("YOUR_OPENAI_API_KEY_HERE")
+        // Get API key from secure source (environment variable or properties file)
+        val apiKey = getSecureApiKey()
+        OpenAIClient(apiKey)
+    }
+    
+    /**
+     * Gets the API key from a secure source (system property, environment variable, etc.)
+     * This prevents hardcoded API keys from being committed to Git.
+     */    private fun getSecureApiKey(): String {
+        // Get the API key from our secure manager
+        val apiKey = ApiKeyManager.getOpenAiApiKey(context)
+        
+        // Try to get from system environment variable as a fallback
+        val envApiKey = System.getenv("OPENAI_API_KEY")
+        if (apiKey.isNullOrBlank() && !envApiKey.isNullOrBlank()) {
+            return envApiKey
+        }
+        
+        // Return the API key or an empty string as a last resort
+        return apiKey ?: ""
     }
     
     // Create Wikipedia DAO
