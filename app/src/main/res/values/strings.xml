@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Wikipedia AI App</string>
+    
+    <!-- Permission related strings -->
+    <string name="location_permission_title">Location Access</string>
+    <string name="location_permission_message">This app needs location access to show Wikipedia articles near you. Would you like to grant this permission?</string>
+    <string name="location_permission_denied">You won\'t see location-based articles without permission</string>
+    <string name="location_permission_granted">Now you\'ll see articles based on your location</string>
+    <string name="grant_permission">Grant</string>
+    <string name="deny_permission">Not Now</string>
+    
+    <!-- Screen titles -->
+    <string name="home_screen_title">Wikipedia AI</string>
+    <string name="search_screen_title">Search Articles</string>
+    <string name="detail_screen_title">Article Details</string>
+    <string name="favorites_screen_title">My Favorites</string>
+    <string name="settings_screen_title">Settings</string>
+    
+    <!-- General UI strings -->
+    <string name="no_results">No results found</string>
+    <string name="search_hint">Search Wikipedia…</string>
+    <string name="recent_articles">Recently Viewed</string>
+    <string name="nearby_articles">Articles Near You</string>
+    <string name="ai_summary">AI Summary</string>
+    <string name="related_articles">Related Articles</string>
+    <string name="enable_location">Enable Location</string>
+</resources>
