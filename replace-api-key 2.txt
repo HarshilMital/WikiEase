@@ -1,0 +1,1 @@
+literal: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==>YOUR_OPENAI_API_KEY_HERE
